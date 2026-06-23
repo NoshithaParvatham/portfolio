@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Parvatham Noshitha | B.Tech CSE Student & Fresher</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --navy: #0A1628;
+    --navy-mid: #112240;
+    --navy-light: #1E3A5F;
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --white: #F4F6FA;
+    --muted: #8892A4;
+    --text: #CCD6F6;
+    --green: #64FFDA;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--navy);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(10,22,40,0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    padding: 1rem 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .nav-logo {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--gold);
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* SECTIONS */
+  section { padding: 100px 0; }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 2rem; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding-top: 80px;
+    background: radial-gradient(ellipse at 70% 40%, rgba(30,58,95,0.4) 0%, transparent 60%);
+  }
+  .hero-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--gold);
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    margin-bottom: 1.2rem;
+  }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+  .hero-name span { color: var(--gold); }
+  .hero-title {
+    font-size: 1.3rem;
+    color: var(--muted);
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+  }
+  .hero-desc {
+    max-width: 520px;
+    color: var(--muted);
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+  }
+  .hero-stats {
+    display: flex; gap: 2.5rem; margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .stat { display: flex; flex-direction: column; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .stat-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.2rem; }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    padding: 0.75rem 1.75rem;
+    border-radius: 3px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+  }
+  .btn-primary:hover { background: var(--gold-light); }
+  .btn-outline {
+    background: transparent;
+    color: var(--gold);
+    border: 1.5px solid var(--gold);
+  }
+  .btn-outline:hover { background: rgba(201,168,76,0.1); }
+
+  /* SECTION HEADER */
+  .section-header { margin-bottom: 3rem; }
+  .section-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--gold);
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--white);
+  }
+  .section-line {
+    width: 50px; height: 2px;
+    background: var(--gold);
+    margin-top: 0.75rem;
+  }
+
+  /* ABOUT */
+  #about { background: var(--navy-mid); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .about-text p { color: var(--muted); margin-bottom: 1rem; }
+  .about-links { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
+  .link-chip {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.4rem 0.9rem;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 2px;
+    font-size: 0.78rem;
+    color: var(--gold);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    transition: all 0.2s;
+  }
+  .link-chip:hover { background: rgba(201,168,76,0.1); border-color: var(--gold); }
+  .edu-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(201,168,76,0.1);
+    border-left: 3px solid var(--gold);
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 2px;
+  }
+  .edu-degree { font-weight: 600; color: var(--white); font-size: 0.95rem; }
+  .edu-school { color: var(--muted); font-size: 0.85rem; margin-top: 0.2rem; }
+  .edu-grade {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--gold);
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+  }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+  .skill-category {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(201,168,76,0.1);
+    padding: 1.5rem;
+    border-radius: 3px;
+    transition: border-color 0.2s;
+  }
+  .skill-category:hover { border-color: rgba(201,168,76,0.4); }
+  .skill-cat-title {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--gold);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .skill-tag {
+    background: rgba(201,168,76,0.08);
+    color: var(--text);
+    font-size: 0.78rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 2px;
+    border: 1px solid rgba(201,168,76,0.15);
+  }
+
+  /* PROJECTS */
+  #projects { background: var(--navy-mid); }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .project-card {
+    background: var(--navy);
+    border: 1px solid rgba(201,168,76,0.1);
+    padding: 2rem;
+    border-radius: 3px;
+    transition: transform 0.2s, border-color 0.2s;
+    position: relative;
+  }
+  .project-card:hover { transform: translateY(-4px); border-color: rgba(201,168,76,0.4); }
+  .project-icon {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  .project-title { font-weight: 600; color: var(--white); font-size: 1rem; margin-bottom: 0.5rem; }
+  .project-event {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--gold);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+  .project-desc { color: var(--muted); font-size: 0.88rem; line-height: 1.7; margin-bottom: 1.2rem; }
+  .project-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .stack-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--gold);
+    background: rgba(201,168,76,0.08);
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+  }
+
+  /* EXPERIENCE */
+  .exp-timeline { position: relative; padding-left: 2rem; }
+  .exp-timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 1px; background: rgba(201,168,76,0.2);
+  }
+  .exp-item { position: relative; margin-bottom: 2.5rem; }
+  .exp-item::before {
+    content: '';
+    position: absolute; left: -2.4rem; top: 0.4rem;
+    width: 9px; height: 9px;
+    background: var(--gold);
+    border-radius: 50%;
+    border: 2px solid var(--navy);
+    box-shadow: 0 0 0 3px rgba(201,168,76,0.2);
+  }
+  .exp-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.4rem; }
+  .exp-role { font-weight: 600; color: var(--white); font-size: 1rem; }
+  .exp-company { color: var(--gold); font-size: 0.9rem; }
+  .exp-period {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--muted);
+    font-size: 0.78rem;
+    white-space: nowrap;
+  }
+  .exp-desc { color: var(--muted); font-size: 0.88rem; line-height: 1.7; }
+
+  /* CERTIFICATIONS */
+  #certifications { background: var(--navy-mid); }
+  .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+  .cert-card {
+    background: var(--navy);
+    border: 1px solid rgba(201,168,76,0.1);
+    padding: 1.2rem 1.5rem;
+    border-radius: 3px;
+    display: flex; align-items: flex-start; gap: 1rem;
+    transition: border-color 0.2s;
+  }
+  .cert-card:hover { border-color: rgba(201,168,76,0.4); }
+  .cert-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .cert-name { font-weight: 500; color: var(--white); font-size: 0.88rem; line-height: 1.5; }
+  .cert-issuer { color: var(--muted); font-size: 0.78rem; margin-top: 0.2rem; }
+
+  /* ACHIEVEMENTS */
+  .achieve-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+  .achieve-card {
+    background: rgba(201,168,76,0.05);
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 1.5rem;
+    border-radius: 3px;
+    text-align: center;
+  }
+  .achieve-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .achieve-label { color: var(--muted); font-size: 0.85rem; margin-top: 0.5rem; }
+
+  /* CONTACT */
+  #contact { background: var(--navy-mid); text-align: center; }
+  .contact-inner { max-width: 600px; margin: 0 auto; }
+  .contact-inner p { color: var(--muted); margin-bottom: 2rem; }
+  .contact-email {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem;
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+    padding-bottom: 0.2rem;
+    margin-bottom: 2.5rem;
+    transition: border-color 0.2s;
+  }
+  .contact-email:hover { border-color: var(--gold); }
+  .social-links { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.78rem;
+    font-family: 'JetBrains Mono', monospace;
+    border-top: 1px solid rgba(201,168,76,0.1);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 700px) {
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .nav-links { display: none; }
+    .hero-stats { gap: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">&lt;NP /&gt;</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <p class="hero-eyebrow">// Hello, World!</p>
+    <h1 class="hero-name">Parvatham<br/><span>Noshitha</span></h1>
+    <p class="hero-title">B.Tech CSE Student | Fresher</p>
+    <p class="hero-desc">Computer Science undergraduate passionate about building backend systems, scalable software solutions, and full-stack applications. Driven by clean code and real-world impact.</p>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">9.48</span><span class="stat-label">CGPA</span></div>
+      <div class="stat"><span class="stat-num">442</span><span class="stat-label">TCS CodeVita Rank</span></div>
+      <div class="stat"><span class="stat-num">2</span><span class="stat-label">Internships</span></div>
+      <div class="stat"><span class="stat-num">6+</span><span class="stat-label">Certifications</span></div>
+    </div>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-primary">Get In Touch</a>
+      <a href="#projects" class="btn btn-outline">View Work</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-header">
+          <p class="section-eyebrow">// 01. About</p>
+          <h2 class="section-title">Who I Am</h2>
+          <div class="section-line"></div>
+        </div>
+        <p>I'm a Computer Science undergraduate at Bharath Institute of Higher Education and Research, with a strong foundation in Python, Java, SQL, and Data Engineering.</p>
+        <p>I've worked across backend development, IT automation, and full-stack projects — from building doctor scheduling systems to flight luggage tracking platforms. I thrive in environments that challenge me to think critically and ship meaningful software.</p>
+        <p>Outside of code, I enjoy competitive programming and exploring new technologies.</p>
+        <div class="about-links">
+          <a href="https://github.com/NoshithaParvatham" class="link-chip" target="_blank">⌥ GitHub</a>
+          <a href="https://linkedin.com/in/noshitha-parvatham-6b1505314" class="link-chip" target="_blank">in LinkedIn</a>
+          <a href="https://hackerrank.com/profile/noshitha2005" class="link-chip" target="_blank">✦ HackerRank</a>
+          <a href="https://leetcode.com/u/ParvathamNoshitha" class="link-chip" target="_blank">⌗ LeetCode</a>
+        </div>
+      </div>
+      <div class="about-edu">
+        <div class="edu-card">
+          <div class="edu-degree">B.Tech — Computer Science & Engineering</div>
+          <div class="edu-school">Bharath Institute of Higher Education and Research</div>
+          <div class="edu-grade">CGPA: 9.48 · 2022 – Present</div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-degree">Intermediate Education — MPC</div>
+          <div class="edu-school">Srinidhi Junior College</div>
+          <div class="edu-grade">97.1% · 2020 – 2022</div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-degree">Secondary Education — SSC</div>
+          <div class="edu-school">Sreenidhi High School</div>
+          <div class="edu-grade">GPA: 10.0 · 2019 – 2020</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-eyebrow">// 02. Skills</p>
+      <h2 class="section-title">Technical Toolkit</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <div class="skill-cat-title">Languages</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">SQL</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">Web Technologies</div>
+        <div class="skill-tags">
+          <span class="skill-tag">ReactJS</span>
+          <span class="skill-tag">NodeJS</span>
+          <span class="skill-tag">HTML</span>
+          <span class="skill-tag">CSS</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">Database</div>
+        <div class="skill-tags">
+          <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">Relational DB Design</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">Data Engineering</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Data Cleaning</span>
+          <span class="skill-tag">Data Validation</span>
+          <span class="skill-tag">NumPy</span>
+          <span class="skill-tag">Pandas</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">Mobile & Other</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Kotlin</span>
+          <span class="skill-tag">PowerShell</span>
+          <span class="skill-tag">Git</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-eyebrow">// 03. Projects</p>
+      <h2 class="section-title">Things I've Built</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-icon">🏥</div>
+        <div class="project-event">HCL Hackathon</div>
+        <div class="project-title">Doctor Availability Scheduler Platform</div>
+        <p class="project-desc">Built a Python + SQL backend system for doctor availability and appointment booking. Implemented data cleaning and validation with a relational database schema using foreign keys for doctors, clinics, and appointments.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">SQL</span>
+          <span class="stack-tag">MySQL</span>
+          <span class="stack-tag">Data Validation</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-icon">✈️</div>
+        <div class="project-event">Full Stack Project</div>
+        <div class="project-title">Sky Track — Smart Flight Luggage Tracking</div>
+        <p class="project-desc">Developed a full-stack barcode-based airline baggage tracking platform enabling real-time luggage monitoring and notifications for passengers and staff, reducing mishandling incidents.</p>
+        <div class="project-stack">
+          <span class="stack-tag">ReactJS</span>
+          <span class="stack-tag">NodeJS</span>
+          <span class="stack-tag">Kotlin</span>
+          <span class="stack-tag">MySQL</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-eyebrow">// 04. Experience</p>
+      <h2 class="section-title">Where I've Worked</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="exp-timeline">
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Python Development Intern</div>
+            <div class="exp-company">Cognifyz Technologies</div>
+          </div>
+          <div class="exp-period">Aug 2024 – Sep 2024</div>
+        </div>
+        <p class="exp-desc">Developed and deployed a variety of Python projects including tools for string reversal, temperature conversion, email validation, and password strength checking.</p>
+      </div>
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">IT Intern</div>
+            <div class="exp-company">ITC Limited — ITC PSPD, Bhadrachalam</div>
+          </div>
+          <div class="exp-period">June 2024 – July 2024</div>
+        </div>
+        <p class="exp-desc">Completed an internship at ITC Limited's Paperboards division, focusing on automating system information gathering through PowerShell scripting and gaining hands-on experience in IT automation.</p>
+      </div>
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Java Full Stack Developer Virtual Intern</div>
+            <div class="exp-company">EduSkills / AICTE — Ministry of Education</div>
+          </div>
+          <div class="exp-period">Oct 2025 – Dec 2025</div>
+        </div>
+        <p class="exp-desc">Successfully completed a 10-week Java Full Stack Developer Virtual Internship with an Outstanding grade (90–100), supported by EduSkills Academy under the National Internship Portal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-eyebrow">// 05. Certifications</p>
+      <h2 class="section-title">Credentials & Achievements</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="achieve-grid" style="margin-bottom: 3rem;">
+      <div class="achieve-card">
+        <div class="achieve-num">442</div>
+        <div class="achieve-label">Global Rank — TCS CodeVita Season 13</div>
+      </div>
+      <div class="achieve-card">
+        <div class="achieve-num">O</div>
+        <div class="achieve-label">Outstanding Grade — EduSkills Java Full Stack</div>
+      </div>
+      <div class="achieve-card">
+        <div class="achieve-num">10.0</div>
+        <div class="achieve-label">SSC GPA — Perfect Score</div>
+      </div>
+    </div>
+
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-icon">☁️</div>
+        <div>
+          <div class="cert-name">Google Cloud — Generative AI Internship</div>
+          <div class="cert-issuer">Google Cloud</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🔶</div>
+        <div>
+          <div class="cert-name">Oracle Professional Certification</div>
+          <div class="cert-issuer">Oracle · 2025</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">📡</div>
+        <div>
+          <div class="cert-name">Internet of Things (IoT)</div>
+          <div class="cert-issuer">NPTEL</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">📱</div>
+        <div>
+          <div class="cert-name">Coding & Programming</div>
+          <div class="cert-issuer">Samsung Innovation Campus · 2024</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🏆</div>
+        <div>
+          <div class="cert-name">TCS ION Career Edge — Young Professional</div>
+          <div class="cert-issuer">TCS ION</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🤝</div>
+        <div>
+          <div class="cert-name">HackWithHyderabad Hackathon</div>
+          <div class="cert-issuer">Microsoft Office, Hyderabad</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="section-header" style="text-align:center;">
+        <p class="section-eyebrow">// 06. Contact</p>
+        <h2 class="section-title">Let's Connect</h2>
+        <div class="section-line" style="margin: 0.75rem auto 0;"></div>
+      </div>
+      <p style="margin-top:1.5rem;">I'm actively looking for opportunities as a Software Developer. Whether you have a role in mind or just want to say hello — my inbox is open.</p>
+      <a href="mailto:milkynoshitha@gmail.com" class="contact-email">milkynoshitha@gmail.com</a>
+      <div class="social-links">
+        <a href="tel:+918639486897" class="btn btn-outline">📞 +91 8639486897</a>
+        <a href="https://github.com/NoshithaParvatham" class="btn btn-outline" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/noshitha-parvatham-6b1505314" class="btn btn-primary" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Designed & Built by Parvatham Noshitha · 2025 · Chennai, India</p>
+</footer>
+
+</body>
+</html>
